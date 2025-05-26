@@ -12,14 +12,8 @@ function TimerSection({ handleSubmit, secondsLeft }) {
     return `${hrs}:${mins}:${secsOnly}`;
   };
 
-  // Start countdown
- 
-
- 
-  
-
   return (
-    <section className="flex justify-between items-center mb-8 md:mb-16">
+    <section className="flex justify-between items-center mb-8 md:mb-8 lg:mb-16">
       <div className="text-cyan-600 flex items-center gap-3">
         <FaRegClock className="text-3xl" />
         <div className="text-left leading-relaxed text-sm">
@@ -27,12 +21,11 @@ function TimerSection({ handleSubmit, secondsLeft }) {
           <p>{formatTime(secondsLeft)} seconds</p>
         </div>
       </div>
-      <button
+      <div
         onClick={handleSubmit}
-        className=""
       >
         <ButtonWrapper label={"Submit"}/>
-      </button>
+      </div>
     </section>
   );
 }
