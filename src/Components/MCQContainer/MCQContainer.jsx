@@ -91,7 +91,7 @@ const MCQContainer = () => {
     }, []);
 
     return (
-        <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border min-h-[280px] bg-[#fcfcfc] text-cyan-700 my-10 md:my-0 ${start == true ? 'block' : 'flex'} justify-center items-center`}>
+        <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 md:my-0 ${start == true ? 'block' : 'flex'} justify-center items-center`}>
             <section className={`${start == false ? 'flex' : 'hidden'} flex-col justify-between h-1/2 gap-5`}>
                 <div>
                     <h2 className="text-stone-500 text-3xl font-semibold text-center">Level Up Your Mind</h2>
