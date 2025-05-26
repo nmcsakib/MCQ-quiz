@@ -5,6 +5,7 @@ import ButtonWrapper from "../Button/Button";
 
 const MCQContainer = () => {
     let time = 120;
+    const [questionSet, setQuestionSet] = useState([]);
     const [index, setIndex] = useState(0)
     const [isDisabled, setIsDisabled] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null)
@@ -13,9 +14,14 @@ const MCQContainer = () => {
     const [secondsLeft, setSecondsLeft] = useState(time);
     const [isRunning, setIsRunning] = useState(false);
     const intervalRef = useRef(null);
-    const correctAns = questions[index].options[questions[index].answer];
+    const correctAns = questionSet[index]?.options[questionSet[index].answer];
     const [score, setScore] = useState(0)
 
+   const getRandomSet = () => {
+  const allSets = Object.values(questions);
+  const randomIndex = Math.floor(Math.random() * allSets.length);
+  return allSets[randomIndex];
+};
     useEffect(() => {
         const current = userAnswers[index];
         if (current) {
@@ -41,14 +47,20 @@ const MCQContainer = () => {
         }, 1000);
     };
 
-    const handleStart = () => {
-        setScore(0)
-        if (!isRunning) {
-            if (secondsLeft === 0) setSecondsLeft(time);
-            setIsRunning(true);
-            startTimer();
-        }
-    };
+   const handleStart = () => {
+    setScore(0);
+    setUserAnswers({});            // ✅ Clear previous answers
+    setSelectedOption(null);       // ✅ Reset selection
+    setIsDisabled(false);          // ✅ Re-enable buttons
+    setIndex(0);                   // ✅ Reset question index
+    setQuestionSet(getRandomSet()); // ✅ Get new question set
+
+    if (!isRunning) {
+        if (secondsLeft === 0) setSecondsLeft(time);
+        setIsRunning(true);
+        startTimer();
+    }
+};
 
 
     const handleCorrectAns = (e) => {
@@ -80,8 +92,8 @@ const MCQContainer = () => {
     };
 
     useEffect(() => {
-  console.log("User Answers:", userAnswers);
-}, [userAnswers]);
+        console.log("User Answers:", userAnswers);
+    }, [userAnswers]);
     useEffect(() => {
         secondsLeft == 0 && handleSubmit()
     }, [secondsLeft]);
@@ -89,7 +101,6 @@ const MCQContainer = () => {
     useEffect(() => {
         return () => clearInterval(intervalRef.current); // Cleanup on unmount
     }, []);
-
     return (
         <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 md:my-0 ${start == true ? 'block' : 'flex'} justify-center items-center`}>
             <section className={`${start == false ? 'flex' : 'hidden'} flex-col justify-between h-1/2 gap-5`}>
@@ -112,18 +123,18 @@ const MCQContainer = () => {
 
                 {/* Question Container */}
                 <section className="flex flex-col justify-center items-start gap-2">
-                    <p className="text-xs md:text-lg">Quesiton {questions[index].id} of {questions.length}</p>
+                    <p className="text-xs md:text-lg">Quesiton {questionSet[index]?.id} of {questionSet.length}</p>
 
                     <div className="flex flex-col items-start gap-6 w-full">
-                        <h2 className="text-lg md:text-2xl font-bold">{questions[index]?.question}</h2>
+                        <h2 className="text-lg md:text-2xl font-bold">{questionSet[index]?.question}</h2>
                         <ul className="text-start font-semibold w-2/3 grid md:grid-cols-2 md:gap-5 gap-3 ">
-                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questions[index].options.a ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questions[index].options.a}</button></li>
+                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questionSet[index]?.options?.a ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questionSet[index]?.options?.a}</button></li>
 
-                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questions[index].options.b ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questions[index].options.b}</button></li>
+                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questionSet[index]?.options?.b ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questionSet[index]?.options?.b}</button></li>
 
-                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questions[index].options.c ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questions[index].options.c}</button></li>
+                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questionSet[index]?.options?.c ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questionSet[index]?.options?.c}</button></li>
 
-                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questions[index].options.d ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questions[index].options.d}</button></li>
+                            <li> <button disabled={isDisabled} onClick={e => handleCorrectAns(e)} className={`border ${selectedOption === questionSet[index]?.options?.d ? "selected" : ""} hover:border-yellow-600 disabled:border-gray-400 border-gray-400 cursor-pointer rounded-xl p-2 md:p-3 w-full`} >{questionSet[index]?.options?.d}</button></li>
                         </ul>
                     </div>
 
@@ -143,17 +154,17 @@ const MCQContainer = () => {
                     </button>
                     <div className="hidden md:flex justify-center items-center gap-2">
                         {
-                            questions.map(question => <>
-                                <input onClick={() => setIndex(question.id - 1)}
+                            questionSet.map(question => <>
+                                <input onClick={() => setIndex(question?.id - 1)}
                                     className="join-item btn btn-square checked:bg-cyan-600 border-none"
                                     type="radio"
                                     name="options"
-                                    aria-label={question.id}
-                                    checked={question.id == index + 1 && "checked"} />
+                                    aria-label={question?.id}
+                                    checked={question?.id == index + 1 && "checked"} />
                             </>)
                         }
                     </div>
-                    <button onClick={() => setIndex(prevIndex => index != questions.length - 1 ? (prevIndex + 1) : questions.length - 1)} className="join-item btn btn-outline">Next</button>
+                    <button onClick={() => selectedOption && (setIndex(prevIndex => index != questionSet.length - 1 ? (prevIndex + 1) : questionSet.length - 1))} className="join-item btn btn-outline">Next</button>
                 </div>
 
 

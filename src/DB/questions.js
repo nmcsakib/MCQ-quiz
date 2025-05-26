@@ -1,5 +1,5 @@
-const questions = [
-  {
+const questions = {
+  "set1": [{
     "id": 1,
     "question": "What is the SI unit of force?",
     "options": {
@@ -108,7 +108,346 @@ const questions = [
       "d": "Parabolic"
     },
     "answer": "b"
-  }
-]
+  }],
+
+   "set2": [
+    {
+      "id": 1,
+      "question": "What is the chemical symbol for Gold?",
+      "options": {
+        "a": "Au",
+        "b": "Ag",
+        "c": "Gd",
+        "d": "Go"
+      },
+      "answer": "a"
+    },
+    {
+      "id": 2,
+      "question": "Which gas is most abundant in the Earth's atmosphere?",
+      "options": {
+        "a": "Oxygen",
+        "b": "Carbon Dioxide",
+        "c": "Nitrogen",
+        "d": "Hydrogen"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 3,
+      "question": "What part of the cell contains the genetic material?",
+      "options": {
+        "a": "Cytoplasm",
+        "b": "Nucleus",
+        "c": "Mitochondria",
+        "d": "Ribosome"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 4,
+      "question": "What is H₂O commonly known as?",
+      "options": {
+        "a": "Hydrogen Peroxide",
+        "b": "Ozone",
+        "c": "Water",
+        "d": "Salt"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 5,
+      "question": "Which planet is known as the Red Planet?",
+      "options": {
+        "a": "Venus",
+        "b": "Saturn",
+        "c": "Mars",
+        "d": "Jupiter"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 6,
+      "question": "How many bones are there in the adult human body?",
+      "options": {
+        "a": "206",
+        "b": "205",
+        "c": "201",
+        "d": "208"
+      },
+      "answer": "a"
+    },
+    {
+      "id": 7,
+      "question": "What is the powerhouse of the cell?",
+      "options": {
+        "a": "Nucleus",
+        "b": "Ribosome",
+        "c": "Endoplasmic Reticulum",
+        "d": "Mitochondria"
+      },
+      "answer": "d"
+    },
+    {
+      "id": 8,
+      "question": "What is the boiling point of water at sea level?",
+      "options": {
+        "a": "90°C",
+        "b": "100°C",
+        "c": "120°C",
+        "d": "80°C"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 9,
+      "question": "Which vitamin is produced when sunlight hits the skin?",
+      "options": {
+        "a": "Vitamin A",
+        "b": "Vitamin C",
+        "c": "Vitamin D",
+        "d": "Vitamin B12"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 10,
+      "question": "Which organ is responsible for pumping blood throughout the body?",
+      "options": {
+        "a": "Brain",
+        "b": "Lungs",
+        "c": "Heart",
+        "d": "Kidneys"
+      },
+      "answer": "c"
+    }
+  ],
+
+  "set3": [
+    {
+      "id": 1,
+      "question": "What is the basic unit of life?",
+      "options": {
+        "a": "Tissue",
+        "b": "Organ",
+        "c": "Cell",
+        "d": "Molecule"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 2,
+      "question": "Which organelle is known as the control center of the cell?",
+      "options": {
+        "a": "Mitochondria",
+        "b": "Nucleus",
+        "c": "Ribosome",
+        "d": "Golgi body"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 3,
+      "question": "Which gas do plants absorb from the atmosphere for photosynthesis?",
+      "options": {
+        "a": "Oxygen",
+        "b": "Nitrogen",
+        "c": "Carbon Dioxide",
+        "d": "Hydrogen"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 4,
+      "question": "Which part of the plant conducts photosynthesis?",
+      "options": {
+        "a": "Root",
+        "b": "Stem",
+        "c": "Leaf",
+        "d": "Flower"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 5,
+      "question": "What is the function of red blood cells?",
+      "options": {
+        "a": "Fight infection",
+        "b": "Clot blood",
+        "c": "Carry oxygen",
+        "d": "Digest food"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 6,
+      "question": "Which macromolecule is made up of amino acids?",
+      "options": {
+        "a": "Protein",
+        "b": "Carbohydrate",
+        "c": "Fat",
+        "d": "DNA"
+      },
+      "answer": "a"
+    },
+    {
+      "id": 7,
+      "question": "Which kingdom do mushrooms belong to?",
+      "options": {
+        "a": "Animalia",
+        "b": "Plantae",
+        "c": "Fungi",
+        "d": "Protista"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 8,
+      "question": "Which part of the human brain controls balance and coordination?",
+      "options": {
+        "a": "Cerebrum",
+        "b": "Cerebellum",
+        "c": "Medulla",
+        "d": "Thalamus"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 9,
+      "question": "DNA is made up of how many types of nitrogenous bases?",
+      "options": {
+        "a": "2",
+        "b": "3",
+        "c": "4",
+        "d": "5"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 10,
+      "question": "Which blood cells help fight infection?",
+      "options": {
+        "a": "Red blood cells",
+        "b": "White blood cells",
+        "c": "Platelets",
+        "d": "Plasma"
+      },
+      "answer": "b"
+    }
+  ],
+
+ "set4": [
+    {
+      "id": 1,
+      "question": "What is the closest planet to the Sun?",
+      "options": {
+        "a": "Earth",
+        "b": "Venus",
+        "c": "Mercury",
+        "d": "Mars"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 2,
+      "question": "Which planet is known as the Red Planet?",
+      "options": {
+        "a": "Saturn",
+        "b": "Mars",
+        "c": "Jupiter",
+        "d": "Neptune"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 3,
+      "question": "What is the name of our galaxy?",
+      "options": {
+        "a": "Andromeda",
+        "b": "Milky Way",
+        "c": "Orion",
+        "d": "Solar System"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 4,
+      "question": "Which celestial body orbits a planet?",
+      "options": {
+        "a": "Star",
+        "b": "Asteroid",
+        "c": "Moon",
+        "d": "Comet"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 5,
+      "question": "Which planet has rings around it?",
+      "options": {
+        "a": "Mars",
+        "b": "Earth",
+        "c": "Saturn",
+        "d": "Venus"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 6,
+      "question": "What do we call a rock from space that hits Earth's surface?",
+      "options": {
+        "a": "Asteroid",
+        "b": "Comet",
+        "c": "Meteorite",
+        "d": "Satellite"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 7,
+      "question": "What is the Sun mainly made of?",
+      "options": {
+        "a": "Water",
+        "b": "Hydrogen and Helium",
+        "c": "Carbon",
+        "d": "Iron"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 8,
+      "question": "Which planet is the largest in our solar system?",
+      "options": {
+        "a": "Saturn",
+        "b": "Neptune",
+        "c": "Earth",
+        "d": "Jupiter"
+      },
+      "answer": "d"
+    },
+    {
+      "id": 9,
+      "question": "What causes day and night on Earth?",
+      "options": {
+        "a": "Earth's revolution",
+        "b": "Sun's movement",
+        "c": "Earth's rotation",
+        "d": "Moon's shadow"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 10,
+      "question": "Who was the first person to walk on the Moon?",
+      "options": {
+        "a": "Yuri Gagarin",
+        "b": "Buzz Aldrin",
+        "c": "Neil Armstrong",
+        "d": "Michael Collins"
+      },
+      "answer": "c"
+    }
+  ]
+}
 
 export default questions
