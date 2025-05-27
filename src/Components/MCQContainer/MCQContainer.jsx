@@ -4,7 +4,7 @@ import TimerApp from "../Timer/Timer";
 import ButtonWrapper from "../Button/Button";
 
 const MCQContainer = () => {
-    let time = 120;
+   let time = 120;
     const [questionSet, setQuestionSet] = useState([]);
     const [index, setIndex] = useState(0)
     const [isDisabled, setIsDisabled] = useState(false);
@@ -49,11 +49,11 @@ const MCQContainer = () => {
 
    const handleStart = () => {
     setScore(0);
-    setUserAnswers({});            // ✅ Clear previous answers
-    setSelectedOption(null);       // ✅ Reset selection
-    setIsDisabled(false);          // ✅ Re-enable buttons
-    setIndex(0);                   // ✅ Reset question index
-    setQuestionSet(getRandomSet()); // ✅ Get new question set
+    setUserAnswers({});           
+    setSelectedOption(null);     
+    setIsDisabled(false);          
+    setIndex(0);               
+    setQuestionSet(getRandomSet());
 
     if (!isRunning) {
         if (secondsLeft === 0) setSecondsLeft(time);
@@ -92,8 +92,11 @@ const MCQContainer = () => {
     };
 
     useEffect(() => {
-        console.log("User Answers:", userAnswers);
-    }, [userAnswers]);
+        // console.log(questionSet);
+        if(start){
+            setSecondsLeft(questionSet.length > 5 ? 120 : 60)
+        }
+    }, [questionSet, start]);
     useEffect(() => {
         secondsLeft == 0 && handleSubmit()
     }, [secondsLeft]);
@@ -154,14 +157,14 @@ const MCQContainer = () => {
                     </button>
                     <div className="hidden md:flex justify-center items-center gap-2">
                         {
-                            questionSet.map(question => <>
-                                <input onClick={() => setIndex(question?.id - 1)}
+                            questionSet.map(question =>
+                                <input key={question.id} onClick={() => setIndex(question?.id - 1)}
                                     className="join-item btn btn-square checked:bg-cyan-600 border-none"
                                     type="radio"
                                     name="options"
                                     aria-label={question?.id}
                                     checked={question?.id == index + 1 && "checked"} />
-                            </>)
+                            )
                         }
                     </div>
                     <button onClick={() => selectedOption && (setIndex(prevIndex => index != questionSet.length - 1 ? (prevIndex + 1) : questionSet.length - 1))} className="join-item btn btn-outline">Next</button>

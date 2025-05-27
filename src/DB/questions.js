@@ -110,7 +110,7 @@ const questions = {
     "answer": "b"
   }],
 
-   "set2": [
+  "set2": [
     {
       "id": 1,
       "question": "What is the chemical symbol for Gold?",
@@ -336,7 +336,7 @@ const questions = {
     }
   ],
 
- "set4": [
+  "set4": [
     {
       "id": 1,
       "question": "What is the closest planet to the Sun?",
@@ -447,7 +447,406 @@ const questions = {
       },
       "answer": "c"
     }
-  ]
+  ],
+
+  "set5": [{
+    "id": 1,
+    "question": "What is the value of π (pi) approximately?",
+    "options": {
+      "a": "2.14",
+      "b": "3.14",
+      "c": "4.14",
+      "d": "3.41"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 2,
+    "question": "What is the square root of 144?",
+    "options": {
+      "a": "10",
+      "b": "11",
+      "c": "12",
+      "d": "13"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 3,
+    "question": "What is 15% of 200?",
+    "options": {
+      "a": "20",
+      "b": "25",
+      "c": "30",
+      "d": "35"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 4,
+    "question": "What is the value of 3² + 4²?",
+    "options": {
+      "a": "7",
+      "b": "12",
+      "c": "25",
+      "d": "45"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 5,
+    "question": "Which of the following numbers is a prime?",
+    "options": {
+      "a": "4",
+      "b": "6",
+      "c": "9",
+      "d": "7"
+    },
+    "answer": "d"
+  }],
+
+  "set6": [{
+    "id": 1,
+    "question": "Choose the correct spelling:",
+    "options": {
+      "a": "Accomodate",
+      "b": "Acommodate",
+      "c": "Accommodate",
+      "d": "Acomadate"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 2,
+    "question": "Which part of speech is the word 'quickly'?",
+    "options": {
+      "a": "Adjective",
+      "b": "Noun",
+      "c": "Adverb",
+      "d": "Verb"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 3,
+    "question": "Which sentence is in passive voice?",
+    "options": {
+      "a": "The dog chased the cat.",
+      "b": "The cat was chased by the dog.",
+      "c": "The dog is chasing the cat.",
+      "d": "The cat chases the dog."
+    },
+    "answer": "b"
+  },
+  {
+    "id": 4,
+    "question": "Identify the synonym of 'happy':",
+    "options": {
+      "a": "Sad",
+      "b": "Angry",
+      "c": "Joyful",
+      "d": "Tired"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 5,
+    "question": "Which word is an antonym of 'increase'?",
+    "options": {
+      "a": "Expand",
+      "b": "Grow",
+      "c": "Reduce",
+      "d": "Rise"
+    },
+    "answer": "c"
+  }],
+
+  "set7": [{
+    "id": 1,
+    "question": "Who was the first President of the United States?",
+    "options": {
+      "a": "Abraham Lincoln",
+      "b": "George Washington",
+      "c": "Thomas Jefferson",
+      "d": "John Adams"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 2,
+    "question": "In which year did World War II end?",
+    "options": {
+      "a": "1944",
+      "b": "1945",
+      "c": "1946",
+      "d": "1947"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 3,
+    "question": "Who was the leader of Germany during World War II?",
+    "options": {
+      "a": "Stalin",
+      "b": "Churchill",
+      "c": "Roosevelt",
+      "d": "Hitler"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 4,
+    "question": "What ancient civilization built the pyramids?",
+    "options": {
+      "a": "Roman",
+      "b": "Greek",
+      "c": "Egyptian",
+      "d": "Mesopotamian"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 5,
+    "question": "Which empire was ruled by Emperor Akbar?",
+    "options": {
+      "a": "Maurya Empire",
+      "b": "Mughal Empire",
+      "c": "Gupta Empire",
+      "d": "Ottoman Empire"
+    },
+    "answer": "b"
+  }],
+
+  "set8": [{
+    "id": 1,
+    "question": "What does CPU stand for?",
+    "options": {
+      "a": "Central Power Unit",
+      "b": "Central Processing Unit",
+      "c": "Computer Processing Unit",
+      "d": "Control Processing Unit"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 2,
+    "question": "What does HTML stand for?",
+    "options": {
+      "a": "HyperText Markup Language",
+      "b": "HighText Markup Language",
+      "c": "HyperText Markdown Language",
+      "d": "HyperTransfer Markup Language"
+    },
+    "answer": "a"
+  },
+  {
+    "id": 3,
+    "question": "Which device is used to input data?",
+    "options": {
+      "a": "Monitor",
+      "b": "Printer",
+      "c": "Keyboard",
+      "d": "Speaker"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 4,
+    "question": "Which programming language is primarily used for web development?",
+    "options": {
+      "a": "Python",
+      "b": "Java",
+      "c": "C++",
+      "d": "JavaScript"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 5,
+    "question": "Which of the following is an operating system?",
+    "options": {
+      "a": "MS Word",
+      "b": "Google",
+      "c": "Windows",
+      "d": "Chrome"
+    },
+    "answer": "c"
+  }],
+
+
+  "set9": [
+    {
+      "id": 1,
+      "question": "What is the closest planet to the Sun?",
+      "options": {
+        "a": "Earth",
+        "b": "Venus",
+        "c": "Mercury",
+        "d": "Mars"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 2,
+      "question": "Which planet is known as the Red Planet?",
+      "options": {
+        "a": "Saturn",
+        "b": "Mars",
+        "c": "Jupiter",
+        "d": "Neptune"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 3,
+      "question": "What is the name of our galaxy?",
+      "options": {
+        "a": "Andromeda",
+        "b": "Milky Way",
+        "c": "Orion",
+        "d": "Solar System"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 4,
+      "question": "Which celestial body orbits a planet?",
+      "options": {
+        "a": "Star",
+        "b": "Asteroid",
+        "c": "Moon",
+        "d": "Comet"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 5,
+      "question": "Which planet has rings around it?",
+      "options": {
+        "a": "Mars",
+        "b": "Earth",
+        "c": "Saturn",
+        "d": "Venus"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 6,
+      "question": "What do we call a rock from space that hits Earth's surface?",
+      "options": {
+        "a": "Asteroid",
+        "b": "Comet",
+        "c": "Meteorite",
+        "d": "Satellite"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 7,
+      "question": "What is the Sun mainly made of?",
+      "options": {
+        "a": "Water",
+        "b": "Hydrogen and Helium",
+        "c": "Carbon",
+        "d": "Iron"
+      },
+      "answer": "b"
+    },
+    {
+      "id": 8,
+      "question": "Which planet is the largest in our solar system?",
+      "options": {
+        "a": "Saturn",
+        "b": "Neptune",
+        "c": "Earth",
+        "d": "Jupiter"
+      },
+      "answer": "d"
+    },
+    {
+      "id": 9,
+      "question": "What causes day and night on Earth?",
+      "options": {
+        "a": "Earth's revolution",
+        "b": "Sun's movement",
+        "c": "Earth's rotation",
+        "d": "Moon's shadow"
+      },
+      "answer": "c"
+    },
+    {
+      "id": 10,
+      "question": "Who was the first person to walk on the Moon?",
+      "options": {
+        "a": "Yuri Gagarin",
+        "b": "Buzz Aldrin",
+        "c": "Neil Armstrong",
+        "d": "Michael Collins"
+      },
+      "answer": "c"
+    }
+  ],
+
+  "set10": [{
+    "id": 1,
+    "question": "Which is the largest continent by area?",
+    "options": {
+      "a": "Africa",
+      "b": "Asia",
+      "c": "North America",
+      "d": "Europe"
+    },
+    "answer": "b"
+  },
+  {
+    "id": 2,
+    "question": "Which is the longest river in the world?",
+    "options": {
+      "a": "Amazon",
+      "b": "Yangtze",
+      "c": "Nile",
+      "d": "Mississippi"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 3,
+    "question": "What is the capital of Australia?",
+    "options": {
+      "a": "Sydney",
+      "b": "Melbourne",
+      "c": "Canberra",
+      "d": "Brisbane"
+    },
+    "answer": "c"
+  },
+  {
+    "id": 4,
+    "question": "Which ocean is the largest?",
+    "options": {
+      "a": "Atlantic",
+      "b": "Indian",
+      "c": "Southern",
+      "d": "Pacific"
+    },
+    "answer": "d"
+  },
+  {
+    "id": 5,
+    "question": "Mount Everest lies in which mountain range?",
+    "options": {
+      "a": "Andes",
+      "b": "Rockies",
+      "c": "Himalayas",
+      "d": "Alps"
+    },
+    "answer": "c"
+  }]
+
+
+
+
+
 }
 
 export default questions
