@@ -1,7 +1,7 @@
 import { FaRegClock } from "react-icons/fa";
 import ButtonWrapper from "../Button/Button";
 
-function TimerSection({ handleSubmit, secondsLeft }) {
+function TimerSection({ secondsLeft }) {
  
 
   // Format seconds into HH:MM:SS
@@ -21,10 +21,8 @@ function TimerSection({ handleSubmit, secondsLeft }) {
           <p>{formatTime(secondsLeft)} seconds</p>
         </div>
       </div>
-      <div
-        onClick={handleSubmit}
-      >
-        <ButtonWrapper label={"Submit"}/>
+      <div>
+        <ButtonWrapper label={"History"}/>
       </div>
     </section>
   );

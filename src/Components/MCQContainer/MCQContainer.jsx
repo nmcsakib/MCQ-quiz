@@ -121,7 +121,7 @@ const MCQContainer = () => {
             </section>
             <section className={`${start == false ? 'hidden' : 'flex'} flex-col p-5`} >
                 {/* Time and submit */}
-                <TimerApp secondsLeft={secondsLeft} handleSubmit={handleSubmit} />
+                <TimerApp secondsLeft={secondsLeft} />
                 {/* Time and submit */}
 
                 {/* Question Container */}
@@ -146,7 +146,7 @@ const MCQContainer = () => {
 
                 {/* Pagination */}
 
-                <div className="join w-full flex justify-center mt-4 md:my-8 gap-2 disabled:text-red-400">
+                <div className="join w-full flex justify-center my-4 md:my-8 gap-2 disabled:text-red-400">
                     <button
                         onClick={() => {
                             setIndex((prevIndex) => (prevIndex !== 0 ? prevIndex - 1 : 0));
@@ -172,6 +172,9 @@ const MCQContainer = () => {
 
 
                 {/* Pagination */}
+                <div onClick={handleSubmit}>
+                <ButtonWrapper label={"Submit"}/>
+                </div>
             </section>
 
 
