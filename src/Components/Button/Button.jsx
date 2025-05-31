@@ -1,4 +1,4 @@
-import { FaHistory } from "react-icons/fa";
+import { FaAlignLeft, FaCaretLeft, FaHistory, FaPause, FaPlay, FaTrash } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 
 const ButtonWrapper = ({label}) => {
@@ -25,7 +25,25 @@ const NeumorphismButton = ({label}) => {
         md:w-[150px] justify-center cursor-pointer
     `}
     >
-      {label === "History" ? <FaHistory/> : <FiSend />}
+      {
+      label === "History" 
+      ?
+       <FaHistory/>
+
+       : label === "Clear" 
+       ? 
+       <FaTrash/>
+
+       : label === "Go back" 
+       ? 
+       <FaCaretLeft/>
+       : 
+       label === "Submit"
+       ? <FiSend/>
+       :
+      <FaPlay />
+      
+      }
       <span>{label}</span>
     </button>
   );

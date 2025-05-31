@@ -126,8 +126,10 @@ const MCQContainer = () => {
     }, []);
 
     useEffect(() => {
-        setHistory([])
-        removeData()
+        if(cleared){
+            setHistory([])
+            removeData()
+        }
     },[cleared])
     return (
         <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 ${historyBox && "max-h-[400px]"} md:my-0 ${start === true  ? 'block' : 'flex'} justify-center items-center`}>
@@ -181,7 +183,7 @@ const MCQContainer = () => {
             <div onClick={() => setHistoryBox(false)}>
                 <ButtonWrapper label={'Go back'}/>
             </div>
-            <div className="mt-3" onClick={() => setCleared(!cleared)}>
+            <div className="mt-3" onClick={() => setCleared(true)}>
                 <ButtonWrapper label={'Clear'}/>
             </div>
 
