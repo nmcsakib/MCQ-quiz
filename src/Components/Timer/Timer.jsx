@@ -1,7 +1,6 @@
 import { FaRegClock } from "react-icons/fa";
 import ButtonWrapper from "../Button/Button";
-import { addToLocal } from "../../utility/addToLocal";
-function TimerSection({ score, handleSubmit, secondsLeft }) {
+function TimerSection({ handleSubmit, secondsLeft }) {
 
   // Format seconds into HH:MM:SS
   const formatTime = (secs) => {
@@ -21,11 +20,8 @@ function TimerSection({ score, handleSubmit, secondsLeft }) {
           <p>{formatTime(secondsLeft)} seconds</p>
         </div>
       </div>
-      <div onClick={() => {
-                    addToLocal(score)
-                    console.log(score);
-                    handleSubmit()}}>
-        <ButtonWrapper handleSubmit={handleSubmit} label={"Submit"}/>
+      <div onClick={() => {handleSubmit()}}>
+        <ButtonWrapper label={"Submit"}/>
       </div>
     </section>
   );

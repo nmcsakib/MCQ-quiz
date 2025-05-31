@@ -1,7 +1,8 @@
 import questions from "../../DB/questions";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import TimerApp from "../Timer/Timer";
 import ButtonWrapper from "../Button/Button";
+import { addToLocal } from "../../utility/addToLocal";
 
 const MCQContainer = () => {
     let time = 120;
@@ -16,6 +17,7 @@ const MCQContainer = () => {
     const intervalRef = useRef(null);
     const correctAns = questionSet[index]?.options[questionSet[index].answer];
     const [score, setScore] = useState(0)
+    const [submitted, setSubmitted] = useState(false);
     const [history, setHistory] = useState([]);
     const [historyBox, setHistoryBox] = useState(false);
 
@@ -55,20 +57,22 @@ const MCQContainer = () => {
         }, 1000);
     };
 
-    const handleStart = () => {
-        setScore(0);
-        setUserAnswers({});
-        setSelectedOption(null);
-        setIsDisabled(false);
-        setIndex(0);
-        setQuestionSet(getRandomSet());
+  const handleStart = () => {
+    setScore(0);
+    setUserAnswers({});
+    setSelectedOption(null);
+    setIsDisabled(false);
+    setIndex(0);
+    setQuestionSet(getRandomSet());
+    setSubmitted(false); // reset submit flag
 
-        if (!isRunning) {
-            if (secondsLeft === 0) setSecondsLeft(time);
-            setIsRunning(true);
-            startTimer();
-        }
-    };
+    if (!isRunning) {
+        if (secondsLeft === 0) setSecondsLeft(time);
+        setIsRunning(true);
+        startTimer();
+    }
+};
+
 
 
     const handleCorrectAns = (e) => {
@@ -90,16 +94,19 @@ const MCQContainer = () => {
         setIsDisabled(true);
     };
 
-    const handleSubmit = () => {
+   const handleSubmit = useCallback(() => {
+    if (submitted) return;
 
-        clearInterval(intervalRef.current);
-        setIsRunning(false);
-        setSecondsLeft(0);
-        setSelectedOption(null); // Clear selection
-        document.getElementById('my_modal_2').showModal();
-        setStart(false);
+    setSubmitted(true); // prevent further submits
+    addToLocal(score);
+    clearInterval(intervalRef.current);
+    setIsRunning(false);
+    setSecondsLeft(0);
+    setSelectedOption(null);
+    document.getElementById('my_modal_2').showModal();
+    setStart(false);
+}, [score, submitted]);
 
-    };
 
     useEffect(() => {
         // console.log(questionSet);
@@ -109,7 +116,7 @@ const MCQContainer = () => {
     }, [questionSet, start]);
     useEffect(() => {
         secondsLeft == 0 && handleSubmit()
-    }, [secondsLeft]);
+    }, [secondsLeft, handleSubmit]);
 
     useEffect(() => {
         return () => clearInterval(intervalRef.current); // Cleanup on unmount
@@ -173,7 +180,7 @@ const MCQContainer = () => {
               {/* Quiz display page */}
             <section className={`${start == false ? 'hidden' : 'flex'} flex-col p-5`} >
                 {/* Time and submit */}
-                <TimerApp score={score} handleSubmit={handleSubmit} secondsLeft={secondsLeft} />
+                <TimerApp handleSubmit={handleSubmit} secondsLeft={secondsLeft} />
                 {/* Time and submit */}
 
                 {/* Question Container */}

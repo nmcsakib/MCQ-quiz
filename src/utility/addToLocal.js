@@ -18,17 +18,8 @@ const second = now.getSeconds();
     };
 
     const storedList = getData();
-
-    const alreadyExists = storedList.some(
-        item => item.score === newEntry.score && item.time === newEntry.time
-    );
-
-    if (alreadyExists) {
-        console.log('Already submitted this one');
-    } else {
         storedList.unshift(newEntry);
-        localStorage.setItem('quiz-history', JSON.stringify(storedList));
-    }
+        localStorage.setItem('quiz-history', JSON.stringify(storedList))
 };
 
 export {addToLocal}
