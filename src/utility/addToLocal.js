@@ -14,7 +14,7 @@ const minute = now.getMinutes();        // Minutes (0-59)
 const second = now.getSeconds(); 
     const newEntry = {
         score: submittedScore,
-        time:  `${year}-${month}-${day} ${hour}h-${minute}min-${second}sec`
+        time:  ` ${hour > 12 ? hour - 12 : hour}:${minute}:${second}, ${year}/${month}/${day}`
     };
 
     const storedList = getData();
@@ -22,4 +22,8 @@ const second = now.getSeconds();
         localStorage.setItem('quiz-history', JSON.stringify(storedList))
 };
 
-export {addToLocal}
+const removeData = () => {
+    localStorage.setItem('quiz-history', [])
+}
+
+export {addToLocal, removeData}

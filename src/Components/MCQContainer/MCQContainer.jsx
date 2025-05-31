@@ -2,7 +2,7 @@ import questions from "../../DB/questions";
 import { useCallback, useEffect, useRef, useState } from "react";
 import TimerApp from "../Timer/Timer";
 import ButtonWrapper from "../Button/Button";
-import { addToLocal } from "../../utility/addToLocal";
+import { addToLocal, removeData } from "../../utility/addToLocal";
 
 const MCQContainer = () => {
     let time = 120;
@@ -20,12 +20,14 @@ const MCQContainer = () => {
     const [submitted, setSubmitted] = useState(false);
     const [history, setHistory] = useState([]);
     const [historyBox, setHistoryBox] = useState(false);
+    const [cleared, setCleared] = useState(false)
 
     useEffect(() => {
         const storedDataStr = localStorage.getItem('quiz-history');
         storedDataStr ? setHistory(JSON.parse(storedDataStr)) : setHistory([])
 
     }, [historyBox])
+
 
     const getRandomSet = () => {
         const allSets = Object.values(questions);
@@ -58,6 +60,7 @@ const MCQContainer = () => {
     };
 
   const handleStart = () => {
+    setCleared(false)
     setScore(0);
     setUserAnswers({});
     setSelectedOption(null);
@@ -121,6 +124,11 @@ const MCQContainer = () => {
     useEffect(() => {
         return () => clearInterval(intervalRef.current); // Cleanup on unmount
     }, []);
+
+    useEffect(() => {
+        setHistory([])
+        removeData()
+    },[cleared])
     return (
         <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 ${historyBox && "max-h-[400px]"} md:my-0 ${start === true  ? 'block' : 'flex'} justify-center items-center`}>
 
@@ -172,6 +180,9 @@ const MCQContainer = () => {
                }
             <div onClick={() => setHistoryBox(false)}>
                 <ButtonWrapper label={'Go back'}/>
+            </div>
+            <div className="mt-3" onClick={() => setCleared(!cleared)}>
+                <ButtonWrapper label={'Clear'}/>
             </div>
 
             </div>
