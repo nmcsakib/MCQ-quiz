@@ -1,8 +1,7 @@
 import { FaRegClock } from "react-icons/fa";
 import ButtonWrapper from "../Button/Button";
-
-function TimerSection({ secondsLeft }) {
- 
+import { addToLocal } from "../../utility/addToLocal";
+function TimerSection({ score, handleSubmit, secondsLeft }) {
 
   // Format seconds into HH:MM:SS
   const formatTime = (secs) => {
@@ -11,6 +10,7 @@ function TimerSection({ secondsLeft }) {
     const secsOnly = String(secs % 60).padStart(2, "0");
     return `${hrs}:${mins}:${secsOnly}`;
   };
+
 
   return (
     <section className="flex justify-between items-center mb-8 md:mb-8 lg:mb-16">
@@ -21,8 +21,11 @@ function TimerSection({ secondsLeft }) {
           <p>{formatTime(secondsLeft)} seconds</p>
         </div>
       </div>
-      <div>
-        <ButtonWrapper label={"History"}/>
+      <div onClick={() => {
+                    addToLocal(score)
+                    console.log(score);
+                    handleSubmit()}}>
+        <ButtonWrapper handleSubmit={handleSubmit} label={"Submit"}/>
       </div>
     </section>
   );

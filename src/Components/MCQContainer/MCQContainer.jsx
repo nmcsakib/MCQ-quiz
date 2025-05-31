@@ -4,7 +4,7 @@ import TimerApp from "../Timer/Timer";
 import ButtonWrapper from "../Button/Button";
 
 const MCQContainer = () => {
-   let time = 120;
+    let time = 120;
     const [questionSet, setQuestionSet] = useState([]);
     const [index, setIndex] = useState(0)
     const [isDisabled, setIsDisabled] = useState(false);
@@ -16,12 +16,20 @@ const MCQContainer = () => {
     const intervalRef = useRef(null);
     const correctAns = questionSet[index]?.options[questionSet[index].answer];
     const [score, setScore] = useState(0)
+    const [history, setHistory] = useState([]);
+    const [historyBox, setHistoryBox] = useState(false);
 
-   const getRandomSet = () => {
-  const allSets = Object.values(questions);
-  const randomIndex = Math.floor(Math.random() * allSets.length);
-  return allSets[randomIndex];
-};
+    useEffect(() => {
+        const storedDataStr = localStorage.getItem('quiz-history');
+        storedDataStr ? setHistory(JSON.parse(storedDataStr)) : setHistory([])
+
+    }, [historyBox])
+
+    const getRandomSet = () => {
+        const allSets = Object.values(questions);
+        const randomIndex = Math.floor(Math.random() * allSets.length);
+        return allSets[randomIndex];
+    };
     useEffect(() => {
         const current = userAnswers[index];
         if (current) {
@@ -47,20 +55,20 @@ const MCQContainer = () => {
         }, 1000);
     };
 
-   const handleStart = () => {
-    setScore(0);
-    setUserAnswers({});           
-    setSelectedOption(null);     
-    setIsDisabled(false);          
-    setIndex(0);               
-    setQuestionSet(getRandomSet());
+    const handleStart = () => {
+        setScore(0);
+        setUserAnswers({});
+        setSelectedOption(null);
+        setIsDisabled(false);
+        setIndex(0);
+        setQuestionSet(getRandomSet());
 
-    if (!isRunning) {
-        if (secondsLeft === 0) setSecondsLeft(time);
-        setIsRunning(true);
-        startTimer();
-    }
-};
+        if (!isRunning) {
+            if (secondsLeft === 0) setSecondsLeft(time);
+            setIsRunning(true);
+            startTimer();
+        }
+    };
 
 
     const handleCorrectAns = (e) => {
@@ -83,17 +91,19 @@ const MCQContainer = () => {
     };
 
     const handleSubmit = () => {
+
         clearInterval(intervalRef.current);
         setIsRunning(false);
         setSecondsLeft(0);
         setSelectedOption(null); // Clear selection
         document.getElementById('my_modal_2').showModal();
         setStart(false);
+
     };
 
     useEffect(() => {
         // console.log(questionSet);
-        if(start){
+        if (start) {
             setSecondsLeft(questionSet.length > 5 ? 120 : 60)
         }
     }, [questionSet, start]);
@@ -105,23 +115,65 @@ const MCQContainer = () => {
         return () => clearInterval(intervalRef.current); // Cleanup on unmount
     }, []);
     return (
-        <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 md:my-0 ${start == true ? 'block' : 'flex'} justify-center items-center`}>
-            <section className={`${start == false ? 'flex' : 'hidden'} flex-col justify-between h-1/2 gap-5`}>
+        <div className={`rounded-tl-2xl rounded-br-2xl w-4/5 min-w-[300px] max-w-[1000px] border bg-[#fcfcfc] text-cyan-700 my-10 ${historyBox && "max-h-[400px]"} md:my-0 ${start === true  ? 'block' : 'flex'} justify-center items-center`}>
+
+           {
+            historyBox === false && <>
+             {/* Front Page */}
+            <section className={`${start === false ? 'flex' : 'hidden'} flex-col justify-between gap-5`}>
                 <div>
                     <h2 className="text-stone-500 text-3xl font-semibold text-center">Level Up Your Mind</h2>
                     <p className="text-sm text-stone-400 text-center mt-2">Try a Quiz Now</p>
                 </div>
-                <div onClick={() => {
-                    setIndex(0)
-                    handleStart()
-                    setStart(true)
-                }}>
-                    <ButtonWrapper label={"start"} />
+                <div className="flex flex-col md:flex-row justify-center items-center gap-3">
+                    <div onClick={() => {
+                        setIndex(0)
+                        handleStart()
+                        setStart(true)
+                    }}>
+                        <ButtonWrapper label={"start"} />
+                    </div>
+                    <div onClick={() => {
+                        console.log(history)
+                        setHistoryBox(true)}}>
+                        <ButtonWrapper label={"History"} />
+
+                    </div>
                 </div>
             </section>
+            </>
+           }
+
+          {
+            historyBox ? <>
+            {console.log(history)}
+
+            {/* History Box */}
+            <div className="h-full border overflow-y-auto w-full p-4">
+               {
+                
+                history.map((historyObj, i) => <>
+                  <div key={i}
+            className="w-full my-4 bg-white shadow-lg rounded-xl flex sm:flex-row flex-col gap-[20px] p-4">
+            
+            <div>
+                <h1 className="text-[1.4rem] font-bold leading-[24px]">Score: {historyObj.score}</h1>
+                <span className="text-[0.9rem] text-gray-400">Time: {historyObj.time}</span>
+            </div>
+        </div>
+                </>)
+               }
+            <div onClick={() => setHistoryBox(false)}>
+                <ButtonWrapper label={'Go back'}/>
+            </div>
+
+            </div>
+                {/* History Box */}
+            </> : <>
+              {/* Quiz display page */}
             <section className={`${start == false ? 'hidden' : 'flex'} flex-col p-5`} >
                 {/* Time and submit */}
-                <TimerApp secondsLeft={secondsLeft} />
+                <TimerApp score={score} handleSubmit={handleSubmit} secondsLeft={secondsLeft} />
                 {/* Time and submit */}
 
                 {/* Question Container */}
@@ -172,10 +224,10 @@ const MCQContainer = () => {
 
 
                 {/* Pagination */}
-                <div onClick={handleSubmit}>
-                <ButtonWrapper label={"Submit"}/>
-                </div>
+
             </section>
+            </>
+          }
 
 
             <dialog id="my_modal_2" className="modal">
